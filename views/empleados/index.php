@@ -5,13 +5,13 @@
         <div class="row mb-3">
                 <div class="col">
                     <label for="empleadoleado_nombre">Nombre del empleado</label>
-                    <input type="text" name="empleadoleado_nombre" id="empleadoleado_nombre" class="form-control">
+                    <input type="text" name="empleado_nombre" id="empleado_nombre" class="form-control">
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col">
-                    <label for="empleadoleado_dpi">DPI</label>
-                    <input type="number" name="empleadoleado_dpi" id="empleadoleado_dpi" class="form-control">
+                    <label for="empleado_dpi">DPI</label>
+                    <input type="number" name="empleado_dpi" id="empleado_dpi" class="form-control">
                 </div>
             </div>
             <div class="row mb-3">
