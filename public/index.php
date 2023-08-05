@@ -6,6 +6,8 @@ use MVC\Router;
 use Controllers\AppController;
 use Controllers\EmpleadoController;
 use Controllers\PuestoController;
+use Controllers\AreaController;
+
 
 $router = new Router();
 $router->setBaseURL('/' . $_ENV['APP_NAME']);
@@ -22,6 +24,12 @@ $router->post('/API/puestos/guardar', [PuestoController::class,'guardarAPI']);
 $router->get('/API/puestos/buscar', [PuestoController::class,'buscarAPI']);
 $router->post('/API/puestos/modificar', [PuestoController::class,'modificarAPI']);
 $router->post('/API/puestos/eliminar', [PuestoController::class,'eliminarAPI']);
+
+$router->get('/areas', [AreaController::class,'index']);
+$router->post('/API/areas/guardar', [AreaController::class,'guardarAPI']);
+$router->get('/API/areas/buscar', [AreaController::class,'buscarAPI']);
+$router->post('/API/areas/modificar', [AreaController::class,'modificarAPI']);
+$router->post('/API/areas/eliminar', [AreaController::class,'eliminarAPI']);
 
 
 
