@@ -4,17 +4,17 @@ require_once __DIR__ . '/../includes/app.php';
 
 use MVC\Router;
 use Controllers\AppController;
-use Controllers\ProductoController;
+use Controllers\EmpleadoController;
 
 $router = new Router();
 $router->setBaseURL('/' . $_ENV['APP_NAME']);
 
 $router->get('/', [AppController::class,'index']);
-$router->get('/productos', [ProductoController::class,'index']);
-$router->post('/API/productos/guardar', [ProductoController::class,'guardarAPI']);
-$router->get('/API/productos/buscar', [ProductoController::class,'buscarAPI']);
-$router->post('/API/productos/modificar', [ProductoController::class,'modificarAPI']);
-$router->post('/API/productos/eliminar', [ProductoController::class,'eliminarAPI']);
+$router->get('/empleados', [EmpleadoController::class,'index']);
+$router->post('/API/empleados/guardar', [EmpleadoController::class,'guardarAPI']);
+$router->get('/API/empleados/buscar', [EmpleadoController::class,'buscarAPI']);
+$router->post('/API/empleados/modificar', [EmpleadoController::class,'modificarAPI']);
+$router->post('/API/empleados/eliminar', [EmpleadoController::class,'eliminarAPI']);
 
 
 

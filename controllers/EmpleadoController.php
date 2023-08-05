@@ -3,26 +3,26 @@
 namespace Controllers;
 
 use Exception;
-use Model\Producto;
+use Model\Empleado;
 use MVC\Router;
 
-class ProductoController{
+class EmpleadoController{
     public static function index(Router $router){
-        $productos = Producto::all();
-        // $productos2 = Producto::all();
-        // var_dump($productos);
+        $empleados = Empleado::all();
+        // $empleados2 = Producto::all();
+        // var_dump($empleados);
         // exit;
-        $router->render('productos/index', [
-           'productos' => $productos,
-            // 'productos2' => $productos2,
+        $router->render('empleados/index', [
+           'empleados' => $empleados,
+            // 'empleados2' => $empleados2,
         ]);
 
     }
 
     public static function guardarAPI(){
         try {
-            $producto = new Producto($_POST);
-            $resultado = $producto->crear();
+            $empleado = new Empleado($_POST);
+            $resultado = $empleado->crear();
 
             if($resultado['resultado'] == 1){
                 echo json_encode([
@@ -47,21 +47,21 @@ class ProductoController{
 
     public static function buscarAPI(){
         //$productos = Producto::all();
-        $producto_nombre = $_GET['producto_nombre'];
-        $producto_precio = $_GET['producto_precio'];
+        $empleado_nombre = $_GET['empleado_nombre'];
+        $empleado_dpi = $_GET['empleado_dpi'];
 
-        $sql = "SELECT * FROM productos where producto_situacion = 1 ";
-        if($producto_nombre != '') {
-            $sql.= " and producto_nombre like '%$producto_nombre%' ";
+        $sql = "SELECT * FROM empleados where empleado_situacion = 1 ";
+        if($empleado_nombre != '') {
+            $sql.= " and empleado_nombre like '%$empleado_nombre%' ";
         }
-        if($producto_precio != '') {
-            $sql.= " and producto_precio = $producto_precio ";
+        if($empleado_dpi != '') {
+            $sql.= " and empleado_dpi = $empleado_dpi ";
         }
         try {
             
-            $productos = Producto::fetchArray($sql);
+            $empleados = Empleado::fetchArray($sql);
     
-            echo json_encode($productos);
+            echo json_encode($empleados);
         } catch (Exception $e) {
             echo json_encode([
                 'detalle' => $e->getMessage(),
@@ -72,8 +72,8 @@ class ProductoController{
     }
     public static function modificarAPI(){
         try {
-            $producto = new Producto($_POST);
-            $resultado = $producto->actualizar();
+            $empleado = new Empleado($_POST);
+            $resultado = $empleado->actualizar();
 
             if($resultado['resultado'] == 1){
                 echo json_encode([
@@ -101,11 +101,11 @@ class ProductoController{
     public static function eliminarAPI(){
            
         try {
-            $producto_id = $_POST['producto_id'];
-            $producto = Producto::find($producto_id);
+            $empleado_id = $_POST['empleado_id'];
+            $empleado = Empleado::find($empleado_id);
 
-            $producto->producto_situacion = 0;
-            $resultado = $producto->actualizar();
+            $empleado->empleado_situacion = 0;
+            $resultado = $empleado->actualizar();
     
             if ($resultado['resultado'] == 1 ){
                 echo json_encode([
