@@ -34,7 +34,7 @@
                         <ul class="dropdown-menu  dropdown-menu-dark "id="dropwdownRevision" style="margin: 0;">
                             <!-- <h6 class="dropdown-header">Información</h6> -->
                             <li>
-                                <a class="dropdown-item nav-link text-white " href="/final_is2_caal/productos"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Empleados</a>
+                                <a class="dropdown-item nav-link text-white " href="/final_is2_caal/empleados"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Empleados</a>
                             </li>
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/final_is2_caal/productos"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Empleados</a>
