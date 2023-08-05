@@ -93,7 +93,6 @@ const buscar = async () => {
                 const tr = document.createElement('tr');
                 const td1 = document.createElement('td')
                 const td2 = document.createElement('td')
-                const td3 = document.createElement('td')
                 const td4 = document.createElement('td')
                 const td5 = document.createElement('td')
                 const buttonModificar = document.createElement('button')
@@ -116,7 +115,6 @@ const buscar = async () => {
                 td5.appendChild(buttonEliminar)
                 tr.appendChild(td1)
                 tr.appendChild(td2)
-                tr.appendChild(td3)
                 tr.appendChild(td4)
                 tr.appendChild(td5)
 
@@ -128,7 +126,7 @@ const buscar = async () => {
             const tr = document.createElement('tr');
             const td = document.createElement('td')
             td.innerText = 'No existen registros'
-            td.colSpan = 5
+            td.colSpan = 4
             tr.appendChild(td)
             fragment.appendChild(tr);
         }

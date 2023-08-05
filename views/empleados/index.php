@@ -4,7 +4,7 @@
         <input type="hidden" name="empleado_id" id="empleado_id">
         <div class="row mb-3">
                 <div class="col">
-                    <label for="empleadoleado_nombre">Nombre del empleado</label>
+                    <label for="empleado_nombre">Nombre del empleado</label>
                     <input type="text" name="empleado_nombre" id="empleado_nombre" class="form-control">
                 </div>
             </div>
@@ -20,7 +20,7 @@
                     <select name="empleado_id_puesto" id="empleado_id_puesto" class="form-control">
                         <option value="">SELECCIONE...</option>
                         <?php foreach ($puestos as $key => $puesto) : ?>
-                            <option value="<?= $puesto['PUE_ID'] ?>"><?= $puesto['PUE_DESCRIPCION'] ?></option>
+                            <option value="<?= $puesto['puesto_id'] ?>"><?= $puesto['puesto_descripcion'] ?></option>
                         <?php endforeach ?>
                     </select>
                 </div>
@@ -34,8 +34,9 @@
             </div>
             <div class="row mb-3">
                 <div class="col">
-                    <label for="empleado_sexo">Género del empleadoleado</label>
+                    <label for="empleado_sexo">Género del empleado</label>
                     <select name="empleado_sexo" id="empleado_sexo" class="form-control">
+                        <option value="Seleccionar">Seleccionar</option>
                         <option value="Masculino">Masculino</option>
                         <option value="Femenino">Femenino</option>
                     </select>
@@ -47,7 +48,7 @@
                     <select name="empleado_id_area" id="empleado_id_area" class="form-control">
                         <option value="">SELECCIONE...</option>
                         <?php foreach ($areas as $key => $area) : ?>
-                            <option value="<?= $area['AREA_ID'] ?>"><?= $area['AREA_NOMBRE'] ?></option>
+                            <option value="<?= $area['area_id'] ?>"><?= $area['area_nombre'] ?></option>
                         <?php endforeach ?>
                     </select>
                 </div>
@@ -76,7 +77,11 @@
                 <tr>
                     <th>NO. </th>
                     <th>NOMBRE</th>
-                    <th>PRECIO</th>
+                    <th>DPI</th>
+                    <th>PUESTO</th>
+                    <th>EDAD</th>
+                    <th>GENERO</th>
+                    <th>AREA</th>
                     <th>MODIFICAR</th>
                     <th>ELIMINAR</th>
                 </tr>
