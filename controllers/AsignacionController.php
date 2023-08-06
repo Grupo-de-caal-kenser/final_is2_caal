@@ -47,15 +47,15 @@ class AsignacionController{
 
     public static function buscarAPI(){
         //$productos = Producto::all();
-        $asignacion_nombre = $_GET['asignacion_nombre'];
-        $asignacion_dpi = $_GET['asignacion_dpi'];
+        $empleado_id = $_GET['empleado_id'];
+        $puesto_id = $_GET['puesto_id'];
 
         $sql = "SELECT * FROM asignaciones where asignacion_situacion = 1 ";
-        if($asignacion_nombre != '') {
-            $sql.= " and asignacion_nombre like '%$asignacion_nombre%' ";
+        if($empleado_id != '') {
+            $sql.= " and empleado_id like '%$empleado_id%' ";
         }
-        if($asignacion_dpi != '') {
-            $sql.= " and asignacion_dpi = $asignacion_dpi ";
+        if($puesto_id != '') {
+            $sql.= " and puesto_id = $puesto_id ";
         }
         try {
             
