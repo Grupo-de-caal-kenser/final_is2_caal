@@ -45,17 +45,6 @@
                     <input type="number" name="empleado_dpi" id="empleado_dpi" class="form-control">
                 </div>
             </div>
-            <div class="row mb-3">
-                <div class="col">
-                    <label for="empleado_id_puesto">Puesto</label>
-                    <select name="empleado_id_puesto" id="empleado_id_puesto" class="form-control">
-                        <option value="">SELECCIONE...</option>
-                        <?php foreach ($puestos as $key => $puesto) : ?>
-                            <option value="<?= $puesto['puesto_id'] ?>"><?= $puesto['puesto_descripcion'] ?></option>
-                        <?php endforeach ?>
-                    </select>
-                </div>
-            </div>
             
             <div class="row mb-3">
                 <div class="col">
@@ -70,17 +59,6 @@
                         <option value="Seleccionar">Seleccionar</option>
                         <option value="Masculino">Masculino</option>
                         <option value="Femenino">Femenino</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col">
-                    <label for="empleado_id_area">Area</label>
-                    <select name="empleado_id_area" id="empleado_id_area" class="form-control">
-                        <option value="">SELECCIONE...</option>
-                        <?php foreach ($areas as $key => $area) : ?>
-                            <option value="<?= $area['area_id'] ?>"><?= $area['area_nombre'] ?></option>
-                        <?php endforeach ?>
                     </select>
                 </div>
             </div>
@@ -109,10 +87,8 @@
                     <th>NO. </th>
                     <th>NOMBRE</th>
                     <th>DPI</th>
-                    <th>PUESTO</th>
                     <th>EDAD</th>
                     <th>GENERO</th>
-                    <th>AREA</th>
                     <th>MODIFICAR</th>
                     <th>ELIMINAR</th>
                 </tr>
