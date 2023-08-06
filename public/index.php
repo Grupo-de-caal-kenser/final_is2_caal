@@ -7,6 +7,8 @@ use Controllers\AppController;
 use Controllers\EmpleadoController;
 use Controllers\PuestoController;
 use Controllers\AreaController;
+use Controllers\AsignacionController;
+
 
 
 $router = new Router();
@@ -30,6 +32,12 @@ $router->post('/API/areas/guardar', [AreaController::class,'guardarAPI']);
 $router->get('/API/areas/buscar', [AreaController::class,'buscarAPI']);
 $router->post('/API/areas/modificar', [AreaController::class,'modificarAPI']);
 $router->post('/API/areas/eliminar', [AreaController::class,'eliminarAPI']);
+
+$router->get('/asignaciones', [AsignacionController::class,'index']);
+$router->post('/API/asignaciones/guardar', [AsignacionController::class,'guardarAPI']);
+$router->get('/API/asignaciones/buscar', [AsignacionController::class,'buscarAPI']);
+$router->post('/API/asignaciones/modificar', [AsignacionController::class,'modificarAPI']);
+$router->post('/API/asignaciones/eliminar', [AsignacionController::class,'eliminarAPI']);
 
 
 
