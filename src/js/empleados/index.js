@@ -95,10 +95,8 @@ const buscar = async () => {
                 const td1 = document.createElement('td')
                 const td2 = document.createElement('td')
                 const td3 = document.createElement('td')
-                const td4 = document.createElement('td')
                 const td5 = document.createElement('td')
                 const td6 = document.createElement('td')
-                const td7 = document.createElement('td')
                 const td8 = document.createElement('td')
                 const td9 = document.createElement('td')
                 const buttonModificar = document.createElement('button')
@@ -116,10 +114,8 @@ const buscar = async () => {
                 td1.innerText = contador;
                 td2.innerText = empleado.empleado_nombre
                 td3.innerText = empleado.empleado_dpi
-                td4.innerText = empleado.empleado_id_puesto
                 td5.innerText = empleado.empleado_edad
                 td6.innerText = empleado.empleado_sexo
-                td7.innerText = empleado.empleado_id_area
                 
                 
                 // ESTRUCTURANDO DOM
@@ -128,10 +124,8 @@ const buscar = async () => {
                 tr.appendChild(td1)
                 tr.appendChild(td2)
                 tr.appendChild(td3)
-                tr.appendChild(td4)
                 tr.appendChild(td5)
                 tr.appendChild(td6)
-                tr.appendChild(td7)
                 tr.appendChild(td8)
                 tr.appendChild(td9)
 
