@@ -1,3 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+        body{
+            background-image: url('/final_is2_caal/public/images/ejercito2.jpg') !important;
+            background-size:cover; 
+
+        }
+
+        .custom-bordered-table {
+        border: 4px solid black;
+        box-shadow: -1px 2px 4px 4px blue;
+        }
+
+        .custom-bordered-table tr {
+            border: 2px solid black;
+        }
+
+        .custom-bordered-table th {
+            border: 2px solid;
+        }
+        h1 {
+        border: 4px solid black;
+        background-color: white;
+        text-shadow: -1px 2px 4px 4px white;
+        }
+
+    </style>
+</head>
+<body>
 <h1 class="text-center">Formulario de puestos</h1>
 <div class="row justify-content-center mb-5">
     <form class="col-lg-8 border bg-light p-3" id="formularioPuesto">

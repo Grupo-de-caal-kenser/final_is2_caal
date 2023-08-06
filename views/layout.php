@@ -17,7 +17,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <a class="navbar-brand" href="/final_is2_caal/">
-                <img src="<?= asset('./images/cit.png') ?>" width="35px'" alt="cit" >
+                <img src="<?= asset('./images/ejercito.jpg') ?>" width="35px'" alt="cit" >
                 INGROSOFT
             </a>
             <div class="collapse navbar-collapse" id="navbarToggler">
