@@ -41,7 +41,10 @@
                             </li>
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/final_is2_caal/areas"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Areas</a>
-                            </li>                                             
+                            </li>
+                            <li>
+                                <a class="dropdown-item nav-link text-white " href="/final_is2_caal/asignaciones"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Asignaciones</a>
+                            </li>                                              
                         </ul>
                     </div> 
 
