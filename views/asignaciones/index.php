@@ -23,6 +23,9 @@
         .custom-bordered-table th {
             border: 2px solid;
         }
+        h2{
+        color: white;
+        }
 
     </style>
 </head>
@@ -36,22 +39,36 @@
         <div class="row mb-3">
                 <div class="col">
                     <label for="empleado_id">EMPLEADO</label>
-                    <input type="text" name="empleado_id" id="empleado_id" class="form-control">
+                    <select name="empleado_id" id="empleado_id" class="form-control">
+                        <option value="">SELECCIONE...</option>
+                        <?php foreach ($puestos as $key => $puesto) : ?>
+                            <option value="<?= $puesto['empleado_id'] ?>"><?= $puesto['empleado_nombre'] ?></option>
+                        <?php endforeach ?>
+                    </select>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col">
                     <label for="puesto_id">PUESTO</label>
-                    <input type="number" name="puesto_id" id="puesto_id" class="form-control">
+                    <select name="puesto_id" id="puesto_id" class="form-control">
+                        <option value="">SELECCIONE...</option>
+                        <?php foreach ($puestos as $key => $puesto) : ?>
+                            <option value="<?= $puesto['puesto_id'] ?>"><?= $puesto['puesto_descripcion'] ?></option>
+                        <?php endforeach ?>
+                    </select>
                 </div>
             </div>
             
             <div class="row mb-3">
                 <div class="col">
                     <label for="area_id">AREA</label>
-                    <input type="number" name="area_id" id="area_id" class="form-control">
+                    <select name="area_id" id="area_id" class="form-control">
+                        <option value="">SELECCIONE...</option>
+                        <?php foreach ($puestos as $key => $puesto) : ?>
+                            <option value="<?= $puesto['area_id'] ?>"><?= $puesto['area_nombre'] ?></option>
+                        <?php endforeach ?>
+                    </select>
                 </div>
-            </div>
             </div>
         <div class="row mb-3">
             <div class="col">
