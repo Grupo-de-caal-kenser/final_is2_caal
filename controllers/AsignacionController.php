@@ -9,11 +9,17 @@ use MVC\Router;
 class AsignacionController{
     public static function index(Router $router){
         $asignaciones = Asignacion::all();
+        $empleados = static::empleados();
+        $puestos = static::puestos();
+        $areas = static::areas();
         // $asignaciones2 = Producto::all();
         // var_dump($asignaciones);
         // exit;
         $router->render('asignaciones/index', [
            'asignaciones' => $asignaciones,
+           'empleados' => $empleados,
+           'puestos' => $puestos,
+           'areas' => $areas,
             // 'empleados2' => $empleados2,
         ]);
 
@@ -60,6 +66,7 @@ class AsignacionController{
         try {
             
             $asignaciones = Asignacion::fetchArray($sql);
+            header('Content-Type:application/json');
     
             echo json_encode($asignaciones);
         } catch (Exception $e) {
@@ -128,5 +135,75 @@ class AsignacionController{
             ]);
         }
     
+}
+public  static function empleados()
+{
+    
+    
+    $sql = "SELECT * FROM empleados where empleado_situacion = 1  ";
+    
+    
+    
+    try {
+        
+        $empleados = Asignacion::fetchArray($sql);
+
+        if ($empleados){
+            
+            return $empleados; 
+        }else {
+            return 0;
+        }
+    } catch (Exception $e) {
+        
+    }
+}
+
+public  static function puestos()
+{
+    
+    
+    $sql = "SELECT * FROM puestos where puesto_situacion = 1 ";
+    
+    
+    
+    try {
+        
+        $puestos = Asignacion::fetchArray($sql);
+
+        if ($puestos){
+            
+            return $puestos; 
+        }else {
+            return 0;
+        }
+    } catch (Exception $e) {
+        
+    }
+}
+
+
+
+public  static function areas()
+{
+    
+    
+    $sql = "SELECT * FROM areas where area_situacion = 1  ";
+    
+    
+    
+    try {
+        
+        $areas = Asignacion::fetchArray($sql);
+
+        if ($areas){
+            
+            return $areas; 
+        }else {
+            return 0;
+        }
+    } catch (Exception $e) {
+        
+    }
 }
 }

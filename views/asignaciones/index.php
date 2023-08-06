@@ -30,8 +30,6 @@
     </style>
 </head>
 <body>
-    
-
 <h1 class="text-center">Formulario de asignaciones</h1>
 <div class="row justify-content-center mb-5">
     <form class="col-lg-8 border bg-light p-3" id="formularioAsignacion">
@@ -41,8 +39,8 @@
                     <label for="empleado_id">EMPLEADO</label>
                     <select name="empleado_id" id="empleado_id" class="form-control">
                         <option value="">SELECCIONE...</option>
-                        <?php foreach ($puestos as $key => $puesto) : ?>
-                            <option value="<?= $puesto['empleado_id'] ?>"><?= $puesto['empleado_nombre'] ?></option>
+                        <?php foreach ($empleados as $key => $empleado) : ?>
+                            <option value="<?= $empleado['empleado_id'] ?>"><?= $empleado['empleado_nombre'] ?></option>
                         <?php endforeach ?>
                     </select>
                 </div>
@@ -64,8 +62,8 @@
                     <label for="area_id">AREA</label>
                     <select name="area_id" id="area_id" class="form-control">
                         <option value="">SELECCIONE...</option>
-                        <?php foreach ($puestos as $key => $puesto) : ?>
-                            <option value="<?= $puesto['area_id'] ?>"><?= $puesto['area_nombre'] ?></option>
+                        <?php foreach ($areas as $key => $area) : ?>
+                            <option value="<?= $area['area_id'] ?>"><?= $area['area_nombre'] ?></option>
                         <?php endforeach ?>
                     </select>
                 </div>
