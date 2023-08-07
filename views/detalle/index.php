@@ -43,7 +43,7 @@
             <a href="/final_is2_caal/" class="btn btn-info">Regresar al formulario</a>
         </div>
     </div></center>
-<h1 class="text-center">Lista de Empleados por Áreas</h1>
+<h1 class="text-center"> Áreas donde estan asignados los empleados</h1>
 
 <div class="row justify-content-center">
     <div class="col-lg-10">

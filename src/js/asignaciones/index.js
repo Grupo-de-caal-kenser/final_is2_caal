@@ -149,6 +149,7 @@ const buscar = async () => {
 }
 
 const colocarDatos = (datos) => {
+    console.log(datos)
     formulario.empleado_id.value = datos.empleado_id
     formulario.puesto_id.value = datos.puesto_id
     formulario.area_id.value = datos.area_id
