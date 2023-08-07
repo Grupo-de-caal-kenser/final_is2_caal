@@ -8,10 +8,11 @@ use MVC\Router;
 
 class AsignacionController{
     public static function index(Router $router){
+        $empleados = static::buscarEmpleados();
+        $puestos = static::buscarPuestos();
+        $areas = static::buscarAreas();
+
         $asignaciones = Asignacion::all();
-        $empleados = static::empleados();
-        $puestos = static::puestos();
-        $areas = static::areas();
         // $asignaciones2 = Producto::all();
         // var_dump($asignaciones);
         // exit;
@@ -24,7 +25,54 @@ class AsignacionController{
         ]);
 
     }
-
+    public static function buscarEmpleados(){
+        $sql = "SELECT * FROM empleados where empleado_situacion = 1";
+    
+        try {
+            $empleados = Asignacion::fetchArray($sql);
+    
+            if($empleados){
+                return $empleados;
+            }else{
+                return 0;
+            }
+        } catch (Exception $e) {
+            
+        }
+    }
+    //!--------------------------
+    public static function buscarPuestos(){
+        $sql = "SELECT * FROM puestos where puesto_situacion = 1";
+    
+        try {
+            $puestos = Asignacion::fetchArray($sql);
+    
+            if($puestos){
+                return $puestos;
+            }else{
+                return 0;
+            }
+        } catch (Exception $e) {
+            
+        }
+    }
+        //!--------------------------
+        public static function buscarAreas(){
+            $sql = "SELECT * FROM areas where area_situacion = 1";
+        
+            try {
+                $areas = Asignacion::fetchArray($sql);
+        
+                if($areas){
+                    return $areas;
+                }else{
+                    return 0;
+                }
+            } catch (Exception $e) {
+                
+            }
+        }
+        
     public static function guardarAPI(){
         try {
             $asignacion = new Asignacion($_POST);
@@ -54,21 +102,24 @@ class AsignacionController{
     public static function buscarAPI(){
         //$productos = Producto::all();
         $empleado_id = $_GET['empleado_id'];
-        $puesto_id = $_GET['puesto_id'];
 
-        $sql = "SELECT * FROM asignaciones where asignacion_situacion = 1 ";
-        if($empleado_id != '') {
-            $sql.= " and empleado_id like '%$empleado_id%' ";
-        }
-        if($puesto_id != '') {
-            $sql.= " and puesto_id = $puesto_id ";
+
+        $sql = "SELECT asignaciones.asignacion_id,empleados.empleado_id AS asignaciones_empleado_id, puestos.puesto_id AS asignaciones_puesto_id , areas.area_id AS asignaciones_area_id
+        FROM asignaciones 
+        INNER JOIN empleados ON asignaciones.empleado_id = empleados.empleado_id
+        INNER JOIN puestos ON asignaciones.puesto_id = puestos.puesto_id
+        INNER JOIN areas ON asignaciones.area_id = areas.area_id
+
+        WHERE asignaciones.asignacion_situacion = 1";
+    
+        if($empleado_id != ''){
+            $sql .= " AND asignaciones.empleado_id LIKE '%$empleado_id%' ";
         }
         try {
             
-            $asignaciones = Asignacion::fetchArray($sql);
-            header('Content-Type:application/json');
-    
+            $asignaciones = Asignacion::fetchArray($sql);   
             echo json_encode($asignaciones);
+
         } catch (Exception $e) {
             echo json_encode([
                 'detalle' => $e->getMessage(),
@@ -134,76 +185,5 @@ class AsignacionController{
                 'codigo' => 0
             ]);
         }
-    
-}
-public  static function empleados()
-{
-    
-    
-    $sql = "SELECT * FROM empleados where empleado_situacion = 1  ";
-    
-    
-    
-    try {
-        
-        $empleados = Asignacion::fetchArray($sql);
-
-        if ($empleados){
-            
-            return $empleados; 
-        }else {
-            return 0;
-        }
-    } catch (Exception $e) {
-        
     }
-}
-
-public  static function puestos()
-{
-    
-    
-    $sql = "SELECT * FROM puestos where puesto_situacion = 1 ";
-    
-    
-    
-    try {
-        
-        $puestos = Asignacion::fetchArray($sql);
-
-        if ($puestos){
-            
-            return $puestos; 
-        }else {
-            return 0;
-        }
-    } catch (Exception $e) {
-        
-    }
-}
-
-
-
-public  static function areas()
-{
-    
-    
-    $sql = "SELECT * FROM areas where area_situacion = 1  ";
-    
-    
-    
-    try {
-        
-        $areas = Asignacion::fetchArray($sql);
-
-        if ($areas){
-            
-            return $areas; 
-        }else {
-            return 0;
-        }
-    } catch (Exception $e) {
-        
-    }
-}
 }

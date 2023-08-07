@@ -70,7 +70,7 @@
             </div>
         <div class="row mb-3">
             <div class="col">
-                <button type="submit" form="formularioEmpleado" id="btnGuardar" data-saludo= "hola" data-saludo2="hola2" class="btn btn-primary w-100">Guardar</button>
+                <button type="submit" form="formularioAsignacion" id="btnGuardar" data-saludo= "hola" data-saludo2="hola2" class="btn btn-primary w-100">Guardar</button>
             </div>
             <div class="col">
                 <button type="button" id="btnModificar" class="btn btn-warning w-100">Modificar</button>
@@ -87,7 +87,7 @@
 <div class="row justify-content-center" id="divTabla">
     <div class="col-lg-8">
         <h2>Listado de Empleados</h2>
-        <table class="table table-bordered table-hover" id="tablaEmpleados">
+        <table class="table table-bordered table-hover" id="tablaAsignaciones">
             <thead class="table-dark">
                 <tr>
                     <th>NO. </th>

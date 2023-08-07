@@ -71,10 +71,10 @@ const guardar = async (evento) => {
 }
 
 const buscar = async () => {
-
     let empleado_id = formulario.empleado_id.value;
     let puesto_id = formulario.puesto_id.value;
-    const url = `/final_is2_caal/API/asignaciones/buscar?empleado_id=${empleado_id}&puesto_id=${puesto_id}`;
+    let area_id = formulario.area_id.value;
+    const url = `/final_is2_caal/API/asignaciones/buscar?empleado_id=${empleado_id}&puesto_id=${puesto_id}&area_id=${area_id}`;
     const config = {
         method : 'GET'
     }
@@ -83,9 +83,11 @@ const buscar = async () => {
         const respuesta = await fetch(url, config)
         const data = await respuesta.json();
         
-        tablaAsignaciones.tBodies[0].innerHTML = ''
-        const fragment = document.createDocumentFragment();
+        tablaAsignaciones.tBodies[0].innerHTML = ''     
         console.log(data);
+
+        const fragment = document.createDocumentFragment();
+
         // return;
         if(data.length > 0){
             let contador = 1;
@@ -111,9 +113,9 @@ const buscar = async () => {
                 buttonEliminar.addEventListener('click', () => eliminar(asignacion.asignacion_id))
 
                 td1.innerText = contador;
-                td2.innerText = asignacion.empleado_id
-                td3.innerText = asignacion.puesto_id
-                td4.innerText = asignacion.area_id              
+                td2.innerText = asignacion.asignaciones_empleado_id
+                td3.innerText = asignacion.asignaciones_puesto_id
+                td4.innerText = asignacion.asignaciones_area_id              
                 
                 // ESTRUCTURANDO DOM
                 td5.appendChild(buttonModificar)
@@ -147,6 +149,7 @@ const buscar = async () => {
 const colocarDatos = (datos) => {
     formulario.empleado_id.value = datos.empleado_id
     formulario.puesto_id.value = datos.puesto_id
+    formulario.area_id.value = datos.area_id
     formulario.asignacion_id.value = datos.asignacion_id
 
     btnGuardar.disabled = true
@@ -179,8 +182,10 @@ const modificar = async () => {
         alert('Debe llenar todos los campos');
         return 
     }
+    const asignacion_id = formulario.asignacion_id.value;
+
     const body = new FormData(formulario)
-    const url = `/final_is2_caal/API/asignaciones/modificar?asignacion_id=${asignacion_id}`;
+    const url = `/final_is2_caal/API/asignaciones/modificar`;
     const config = {
         method : 'POST',
         body
