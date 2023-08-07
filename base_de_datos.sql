@@ -29,7 +29,7 @@ CREATE TABLE asignaciones (
     puesto_id INTEGER NOT NULL,
     area_id INTEGER NOT NULL,
     asignacion_situacion smallint not null default 1,
-    PRIMARY KEY(asignacion_id),
+    PRIMARY KEY(asignacion_id, empleado_id),
     FOREIGN KEY (empleado_id) REFERENCES empleados(empleado_id),
     FOREIGN KEY (puesto_id) REFERENCES puestos(puesto_id),
     FOREIGN KEY (area_id) REFERENCES areas(area_id)
