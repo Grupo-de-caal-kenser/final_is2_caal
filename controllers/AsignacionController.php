@@ -96,6 +96,8 @@ class AsignacionController{
     public static function buscarAPI(){
 
         $empleado_id = $_GET['empleado_id'];
+        $puesto_id = $_GET['puesto_id'];
+        $area_id = $_GET['area_id'];
 
         $sql = "SELECT asignaciones.asignacion_id, empleados.empleado_nombre AS asignaciones_empleado_id, empleados.empleado_id, puestos.puesto_descripcion AS asignaciones_puesto_descripcion, puestos.puesto_id, areas.area_nombre AS asignaciones_area_nombre, areas.area_id
         FROM asignaciones
@@ -105,9 +107,17 @@ class AsignacionController{
 
         WHERE asignaciones.asignacion_situacion = 1";
     
-        if($empleado_id != ''){
-            $sql .= " AND asignaciones.empleado_id LIKE '%$empleado_id%' ";
-        }
+    if ($empleado_id != '') {
+        $sql .= " AND empleados.empleado_id = '$empleado_id'";
+    }
+    
+    if ($puesto_id != '') {
+        $sql .= " AND puestos.puesto_id = '$puesto_id'";
+    }
+    
+    if ($area_id != '') {
+        $sql .= " AND areas.area_id = '$area_id'";
+    }
         try {
             $asignaciones = Asignacion::fetchArray($sql);
             echo json_encode($asignaciones);
