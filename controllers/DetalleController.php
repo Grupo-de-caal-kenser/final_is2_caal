@@ -24,26 +24,25 @@ class DetalleController
     public static function getEmpleadosPorAreas()
     {
         $sql = "
-            SELECT
-                e.empleado_id,
-                e.empleado_nombre,
-                e.empleado_dpi,
-                e.empleado_edad,
-                e.empleado_sexo,
-                p.puesto_descripcion,
-                p.puesto_sueldo,
-                a.area_nombre
-            FROM
-                empleados e
-                JOIN asignaciones asi ON e.empleado_id = asi.empleado_id
-                JOIN puestos p ON asi.puesto_id = p.puesto_id
-                JOIN areas a ON asi.area_id = a.area_id
-            WHERE
-                e.empleado_situacion = 1
-                AND asi.asignacion_situacion = 1
-                AND p.puesto_situacion = 1
-                AND a.area_situacion = 1;
-        ";
+        SELECT
+            a.area_nombre,
+            e.empleado_nombre,
+            e.empleado_dpi,
+            e.empleado_edad,
+            e.empleado_sexo,
+            p.puesto_descripcion,
+            p.puesto_sueldo
+        FROM
+            areas a
+            LEFT JOIN asignaciones asi ON a.area_id = asi.area_id
+            LEFT JOIN empleados e ON asi.empleado_id = e.empleado_id
+            LEFT JOIN puestos p ON asi.puesto_id = p.puesto_id
+        WHERE
+            a.area_situacion = 1
+            AND (e.empleado_situacion = 1 OR e.empleado_situacion IS NULL)
+            AND (asi.asignacion_situacion = 1 OR asi.asignacion_situacion IS NULL)
+            AND (p.puesto_situacion = 1 OR p.puesto_situacion IS NULL);
+    ";
 
         try {
             // Ejecutar el query y obtener los resultados

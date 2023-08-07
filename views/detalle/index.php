@@ -30,21 +30,23 @@
         }
         h2 {
         border: 1px solid black;
-        background-color: white;
+        background-color: #FF3205 ;
         text-shadow: -1px 2px 4px 4px white;
         }
 
     </style>
 </head>
 <body>
-<center>
-    <div class="row">
-        <div class="col-lg-12">
-            <a href="/final_is2_caal/" class="btn btn-info">Regresar al formulario</a>
+    <center>
+        <div class="row">
+            <div class="col-lg-12">
+                <a href="/final_is2_caal/" class="btn btn-info">Regresar al formulario</a>
+            </div>
         </div>
-    </div></center>
-<h1 class="text-center"> Áreas donde estan asignados los empleados</h1>
+    </center>
+    <h1 class="text-center">Áreas donde están asignados los Empleados</h1>
 
+<div class="row justify-content-center">
 <div class="row justify-content-center">
     <div class="col-lg-10">
         <?php foreach ($empleadosPorAreas as $area => $empleados) : ?>
@@ -62,22 +64,32 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($empleados as $indice => $empleado) : ?>
+                    <?php if (empty($empleados)) : ?>
                         <tr>
-                            <td><?= $indice + 1 ?></td>
-                            <td><?= $empleado['empleado_nombre'] ?></td>
-                            <td><?= $empleado['empleado_dpi'] ?></td>
-                            <td><?= $empleado['puesto_descripcion'] ?></td>
-                            <td><?= $empleado['empleado_edad'] ?></td>
-                            <td><?= $empleado['empleado_sexo'] ?></td>
-                            <td><?= $empleado['puesto_sueldo'] ?></td>
+                            <td colspan="7" class="text-center">Sin registro</td>
                         </tr>
-                    <?php endforeach ?>
+                    <?php else : ?>
+                        <?php foreach ($empleados as $indice => $empleado) : ?>
+                            <tr>
+                                <?php if (empty($empleado['empleado_nombre']) && empty($empleado['empleado_dpi']) && empty($empleado['puesto_descripcion']) && empty($empleado['empleado_edad']) && empty($empleado['empleado_sexo']) && empty($empleado['puesto_sueldo'])) : ?>
+                                    <td colspan="7" class="text-center"><h4>Sin registro<h4></td>
+                                <?php else : ?>
+                                    <td><?= $indice + 1 ?></td>
+                                    <td><?= empty($empleado['empleado_nombre']) ? 'Sin registro' : $empleado['empleado_nombre'] ?></td>
+                                    <td><?= empty($empleado['empleado_dpi']) ? 'Sin registro' : $empleado['empleado_dpi'] ?></td>
+                                    <td><?= empty($empleado['puesto_descripcion']) ? 'Sin registro' : $empleado['puesto_descripcion'] ?></td>
+                                    <td><?= empty($empleado['empleado_edad']) ? 'Sin registro' : $empleado['empleado_edad'] ?></td>
+                                    <td><?= empty($empleado['empleado_sexo']) ? 'Sin registro' : $empleado['empleado_sexo'] ?></td>
+                                    <td><?= empty($empleado['puesto_sueldo']) ? 'Sin registro' : $empleado['puesto_sueldo'] ?></td>
+                                <?php endif ?>
+                            </tr>
+                        <?php endforeach ?>
+                    <?php endif ?>
                 </tbody>
-            </table>
+            </table><br>
         <?php endforeach ?>
     </div>
-
 </div>
+    <script src="<?= asset('./build/js/detalles/index.js')  ?>"></script>
 </body>
 </html>
