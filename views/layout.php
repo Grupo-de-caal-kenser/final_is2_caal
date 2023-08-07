@@ -18,7 +18,7 @@
             </button>
             <a class="navbar-brand" href="/final_is2_caal/">
                 <img src="<?= asset('./images/ejercito.jpg') ?>" width="35px'" alt="cit" >
-                INGROSOFT
+                INGESOFT
             </a>
             <div class="collapse navbar-collapse" id="navbarToggler">
                 
