@@ -32,7 +32,7 @@
 <body>
 <h1 class="text-center">Formulario de asignaciones</h1>
 <div class="row justify-content-center mb-5">
-    <form class="col-lg-8 border bg-light p-3" id="formularioAsignaciones">
+    <form class="col-lg-8 border bg-light p-3" id="formularioAsignacion">
         <input type="hidden" name="asignacion_id" id="asignacion_id">
         <div class="row mb-3">
                 <div class="col">
@@ -70,7 +70,7 @@
             </div>
         <div class="row mb-3">
             <div class="col">
-                <button type="submit" form="formularioAsignaciones" id="btnGuardar" data-saludo= "hola" data-saludo2="hola2" class="btn btn-primary w-100">Guardar</button>
+                <button type="submit" form="formularioAsignacion" id="btnGuardar" data-saludo= "hola" data-saludo2="hola2" class="btn btn-primary w-100">Guardar</button>
             </div>
             <div class="col">
                 <button type="button" id="btnModificar" class="btn btn-warning w-100">Modificar</button>
