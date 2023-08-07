@@ -8,6 +8,8 @@ use Controllers\EmpleadoController;
 use Controllers\PuestoController;
 use Controllers\AreaController;
 use Controllers\AsignacionController;
+use Controllers\DetalleController;
+
 
 
 
@@ -41,6 +43,10 @@ $router->post('/API/asignaciones/guardar', [AsignacionController::class,'guardar
 $router->get('/API/asignaciones/buscar', [AsignacionController::class,'buscarAPI']);
 $router->post('/API/asignaciones/modificar', [AsignacionController::class,'modificarAPI']);
 $router->post('/API/asignaciones/eliminar', [AsignacionController::class,'eliminarAPI']);
+
+
+
+$router->get('/detalle', [DetalleController::class, 'index']);
 
 
 

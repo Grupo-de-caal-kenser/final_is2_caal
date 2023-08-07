@@ -1,5 +1,5 @@
 <?php
-// DetalleController.php
+// OrganizacionController.php
 
 namespace Controllers;
 
@@ -14,55 +14,55 @@ class DetalleController
 {
     public static function index(Router $router)
     {
-        $empleadosAreas = static::getEmpleadosAreas();
-        var_dump($empleadosAreas);
+        $empleadosPorAreas = static::getEmpleadosPorAreas();
+        ($empleadosPorAreas);
         $router->render('detalle/index', [
-            'empleadosAreas' => $empleadosAreas
+            'empleadosPorAreas' => $empleadosPorAreas
         ]);
     }
 
-    public static function getEmpleadosAreas()
+    public static function getEmpleadosPorAreas()
     {
         $sql = "
             SELECT
-                emp.empleado_id,
-                emp.empleado_nombre,
-                emp.empleado_dpi,
-                emp.empleado_edad,
-                emp.empleado_sexo,
-                pu.puesto_descripcion,
-                pu.puesto_sueldo,
-                are.area_nombre
+                e.empleado_id,
+                e.empleado_nombre,
+                e.empleado_dpi,
+                e.empleado_edad,
+                e.empleado_sexo,
+                p.puesto_descripcion,
+                p.puesto_sueldo,
+                a.area_nombre
             FROM
-                empleados emp
-                JOIN asignaciones as ON emp.empleado_id = as.empleado_id
-                JOIN puestos pu ON as.puesto_id = pu.puesto_id
-                JOIN areas are ON as.area_id = are.area_id
+                empleados e
+                JOIN asignaciones asi ON e.empleado_id = asi.empleado_id
+                JOIN puestos p ON asi.puesto_id = p.puesto_id
+                JOIN areas a ON asi.area_id = a.area_id
             WHERE
-                emp.empleado_situacion = 1
-                AND as.asignacion_situacion = 1
-                AND pu.puesto_situacion = 1
-                AND are.area_situacion = 1;
+                e.empleado_situacion = 1
+                AND asi.asignacion_situacion = 1
+                AND p.puesto_situacion = 1
+                AND a.area_situacion = 1;
         ";
 
         try {
-            // Ejecutar
-            $empleadosAreas = Empleado::fetchArray($sql);
+            // Ejecutar el query y obtener los resultados
+            $empleadosPorAreas = Empleado::fetchArray($sql);
 
-            // resultados por áreas
-            $empleadosAreasDetalles = [];
-            foreach ($empleadosAreas as $empleadoPorArea) {
-                $nombreArea = $empleadoPorArea['area_nombre'];
-                if (!isset($empleadosAreasDetalles[$nombreArea])) {
-                    $empleadosAreasDetalles[$nombreArea] = [];
+            // Organizar los resultados por áreas
+            $empleadosPorAreasOrganizados = [];
+            foreach ($empleadosPorAreas as $empleadoPorArea) {
+                $areaNombre = $empleadoPorArea['area_nombre'];
+                if (!isset($empleadosPorAreasOrganizados[$areaNombre])) {
+                    $empleadosPorAreasOrganizados[$areaNombre] = [];
                 }
-                $empleadosAreasDetalles[$nombreArea][] = $empleadoPorArea;
+                $empleadosPorAreasOrganizados[$areaNombre][] = $empleadoPorArea;
             }
 
-            return $empleadosAreasDetalles;
+            return $empleadosPorAreasOrganizados;
         } catch (Exception $e) {
-
-            return []; 
+            // Manejar el error si es necesario
+            return []; // Si hay un error, retornar un array vacío
         }
     }
 }

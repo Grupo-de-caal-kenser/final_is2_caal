@@ -28,7 +28,7 @@
                     </li>
   
                     <div class="nav-item dropdown " >
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle" href="/final_is2_caal/asignaciones" data-bs-toggle="dropdown">
                             <i class="bi bi-gear me-2"></i>Ingresar datos
                         </a>
                         <ul class="dropdown-menu  dropdown-menu-dark "id="dropwdownRevision" style="margin: 0;">
@@ -44,7 +44,10 @@
                             </li>
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/final_is2_caal/asignaciones"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Asignaciones</a>
-                            </li>                                              
+                            </li> 
+                            <li>
+                                <a class="dropdown-item nav-link text-white" href="/final_is2_caal/detalle"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Detalles</a>
+                            </li>                                             
                         </ul>
                     </div> 
 
