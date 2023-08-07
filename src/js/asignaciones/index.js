@@ -185,7 +185,7 @@ const modificar = async () => {
         return 
     }
     const body = new FormData(formulario)
-    const url = `/final_is2_caal/API/asignaciones/modificar`;
+    const url = `/final_is2_caal/API/asignaciones/modificar?asignacion_id=${asignacion_id}`;
     const config = {
         method : 'POST',
         body
