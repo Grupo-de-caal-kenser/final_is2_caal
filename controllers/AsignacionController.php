@@ -2,74 +2,68 @@
 
 namespace Controllers;
 
+use Model\Empleado;
+use Model\Area;
+use Model\Puesto;
 use Exception;
 use Model\Asignacion;
 use MVC\Router;
 
 class AsignacionController{
     public static function index(Router $router){
-        $empleados = static::buscarEmpleados();
-        $puestos = static::buscarPuestos();
-        $areas = static::buscarAreas();
-
+        $empleados = static::buscarEmpleado();
+        $puestos = static::buscarPuesto();
+        $areas = static::buscarArea();
         $asignaciones = Asignacion::all();
         // $asignaciones2 = Producto::all();
         // var_dump($asignaciones);
         // exit;
         $router->render('asignaciones/index', [
-           'asignaciones' => $asignaciones,
+           
            'empleados' => $empleados,
            'puestos' => $puestos,
            'areas' => $areas,
+           'asignaciones' => $asignaciones,
             // 'empleados2' => $empleados2,
         ]);
 
     }
-    public static function buscarEmpleados(){
+    public static function buscarEmpleado(){
         $sql = "SELECT * FROM empleados where empleado_situacion = 1";
     
         try {
-            $empleados = Asignacion::fetchArray($sql);
+            $empleados = Empleado::fetchArray($sql);
     
-            if($empleados){
-                return $empleados;
-            }else{
-                return 0;
-            }
+            return $empleados;
         } catch (Exception $e) {
+
+            return [];
             
         }
     }
     //!--------------------------
-    public static function buscarPuestos(){
+    public static function buscarPuesto(){
         $sql = "SELECT * FROM puestos where puesto_situacion = 1";
     
         try {
-            $puestos = Asignacion::fetchArray($sql);
-    
-            if($puestos){
-                return $puestos;
-            }else{
-                return 0;
-            }
+            $puestos = Puesto::fetchArray($sql);
+            return $puestos;
+
         } catch (Exception $e) {
+            return [];
             
         }
     }
         //!--------------------------
-        public static function buscarAreas(){
+        public static function buscarArea(){
             $sql = "SELECT * FROM areas where area_situacion = 1";
         
             try {
-                $areas = Asignacion::fetchArray($sql);
-        
-                if($areas){
-                    return $areas;
-                }else{
-                    return 0;
-                }
+                $areas = Area::fetchArray($sql);
+                return $areas;
+
             } catch (Exception $e) {
-                
+                return [];
             }
         }
         
@@ -100,26 +94,22 @@ class AsignacionController{
     }
 
     public static function buscarAPI(){
-        //$productos = Producto::all();
+
+        $asignacion_id = $_GET['asignacion_id'];
         $empleado_id = $_GET['empleado_id'];
+        $
 
-
-        $sql = "SELECT asignaciones.asignacion_id,empleados.empleado_nombre AS asignaciones_empleado_id, puestos.puesto_descripcion AS asignaciones_puesto_id , areas.area_nombre AS asignaciones_area_id
-        FROM asignaciones 
-        INNER JOIN empleados ON asignaciones.empleado_id = empleados.empleado_id
-        INNER JOIN puestos ON asignaciones.puesto_id = puestos.puesto_id
-        INNER JOIN areas ON asignaciones.area_id = areas.area_id
-
-        WHERE asignaciones.asignacion_situacion = 1";
-    
-        if($empleado_id != ''){
-            $sql .= " AND asignaciones.empleado_id LIKE '%$empleado_id%' ";
+        $sql = "SELECT * FROM asignaciones where asignacion_situacion = 1 ";
+        if ($asignacion_id != '') {
+            $asignacion_id = $asignacion_id;
+            $sql .= "asignacion_id like '%$asignacion_id%' ";
+        }
+        if ($empleado_id != '') {
+            $sql .= " and empleado_id = $empleado_id ";
         }
         try {
-            
-            $asignaciones = Asignacion::fetchArray($sql);   
+            $asignaciones = Asignacion::fetchArray($sql);
             echo json_encode($asignaciones);
-
         } catch (Exception $e) {
             echo json_encode([
                 'detalle' => $e->getMessage(),
@@ -153,8 +143,6 @@ class AsignacionController{
             ]);
         }
     }
-
-
 
     public static function eliminarAPI(){
            

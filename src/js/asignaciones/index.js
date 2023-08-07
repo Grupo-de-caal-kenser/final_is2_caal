@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import { validarFormulario, Toast, confirmacion} from "../funciones";
 
 
-const formulario = document.querySelector('form')
+const formulario = document.querySelector('#formularioAsignaciones')
 const tablaAsignaciones = document.getElementById('tablaAsignaciones');
 const btnBuscar = document.getElementById('btnBuscar');
 const btnModificar = document.getElementById('btnModificar');
@@ -73,8 +73,7 @@ const guardar = async (evento) => {
 const buscar = async () => {
     let empleado_id = formulario.empleado_id.value;
     let puesto_id = formulario.puesto_id.value;
-    let area_id = formulario.area_id.value;
-    const url = `/final_is2_caal/API/asignaciones/buscar?empleado_id=${empleado_id}&puesto_id=${puesto_id}&area_id=${area_id}`;
+    const url = `/final_is2_caal/API/asignaciones/buscar?empleado_id=${empleado_id}&puesto_id=${puesto_id}`;
     const config = {
         method : 'GET'
     }
@@ -84,9 +83,8 @@ const buscar = async () => {
         const data = await respuesta.json();
         
         tablaAsignaciones.tBodies[0].innerHTML = ''     
-        console.log(data);
-
         const fragment = document.createDocumentFragment();
+        console.log(data);
 
         // return;
         if(data.length > 0){
@@ -99,7 +97,6 @@ const buscar = async () => {
                 const td3 = document.createElement('td')
                 const td4 = document.createElement('td')
                 const td5 = document.createElement('td')
-                const td6 = document.createElement('td')
                 const buttonModificar = document.createElement('button')
                 const buttonEliminar = document.createElement('button')
 
@@ -113,19 +110,17 @@ const buscar = async () => {
                 buttonEliminar.addEventListener('click', () => eliminar(asignacion.asignacion_id))
 
                 td1.innerText = contador;
-                td2.innerText = asignacion.asignaciones_empleado_id
-                td3.innerText = asignacion.asignaciones_puesto_id
-                td4.innerText = asignacion.asignaciones_area_id              
+                td2.innerText = asignacion.empleado_id
+                td3.innerText = asignacion.puesto_id            
                 
                 // ESTRUCTURANDO DOM
-                td5.appendChild(buttonModificar)
-                td6.appendChild(buttonEliminar)
+                td4.appendChild(buttonModificar)
+                td5.appendChild(buttonEliminar)
                 tr.appendChild(td1)
                 tr.appendChild(td2)
                 tr.appendChild(td3)
                 tr.appendChild(td4)
                 tr.appendChild(td5)
-                tr.appendChild(td6)
 
                 fragment.appendChild(tr);
 
@@ -135,7 +130,7 @@ const buscar = async () => {
             const tr = document.createElement('tr');
             const td = document.createElement('td')
             td.innerText = 'No existen registros'
-            td.colSpan = 6
+            td.colSpan = 5
             tr.appendChild(td)
             fragment.appendChild(tr);
         }
@@ -149,7 +144,6 @@ const buscar = async () => {
 const colocarDatos = (datos) => {
     formulario.empleado_id.value = datos.empleado_id
     formulario.puesto_id.value = datos.puesto_id
-    formulario.area_id.value = datos.area_id
     formulario.asignacion_id.value = datos.asignacion_id
 
     btnGuardar.disabled = true
@@ -182,8 +176,6 @@ const modificar = async () => {
         alert('Debe llenar todos los campos');
         return 
     }
-    const asignacion_id = formulario.asignacion_id.value;
-
     const body = new FormData(formulario)
     const url = `/final_is2_caal/API/asignaciones/modificar`;
     const config = {
