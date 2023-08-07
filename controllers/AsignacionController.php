@@ -104,7 +104,7 @@ class AsignacionController{
         $empleado_id = $_GET['empleado_id'];
 
 
-        $sql = "SELECT asignaciones.asignacion_id,empleados.empleado_id AS asignaciones_empleado_id, puestos.puesto_id AS asignaciones_puesto_id , areas.area_id AS asignaciones_area_id
+        $sql = "SELECT asignaciones.asignacion_id,empleados.empleado_nombre AS asignaciones_empleado_id, puestos.puesto_descripcion AS asignaciones_puesto_id , areas.area_nombre AS asignaciones_area_id
         FROM asignaciones 
         INNER JOIN empleados ON asignaciones.empleado_id = empleados.empleado_id
         INNER JOIN puestos ON asignaciones.puesto_id = puestos.puesto_id
