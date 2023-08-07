@@ -54,7 +54,7 @@
                 </ul> 
                 <div class="col-lg-1 d-grid mb-lg-0 mb-2">
                     <!-- Ruta relativa desde el archivo donde se incluye menu.php -->
-                    <a href="/final_is2_caal/empleados" class="btn btn-danger"><i class="bi bi-arrow-bar-left"></i>MENÚ</a>
+                    <a href="/final_is2_caal/" class="btn btn-danger"><i class="bi bi-arrow-bar-left"></i>SALIR</a>
                 </div>
 
             

@@ -30,7 +30,7 @@
         }
         h2 {
         border: 1px solid black;
-        background-color: #FF3205 ;
+        background-color: #EBD816 ;
         text-shadow: -1px 2px 4px 4px white;
         }
 
