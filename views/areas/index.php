@@ -24,7 +24,13 @@
             border: 2px solid;
         }
         h1 {
-        border: 4px solid black;
+        color: black;
+        border: 1px solid black;
+        background-color: white;
+        text-shadow: -1px 2px 20px white;
+        }
+        h2 {
+        border: 2px solid black;
         background-color: white;
         text-shadow: -1px 2px 4px 4px white;
         }
@@ -60,7 +66,7 @@
 </div>
 <div class="row justify-content-center" id="divTabla">
     <div class="col-lg-8">
-        <h2>Listado de areas</h2>
+        <center><h2>Listado de areas</h2></center>
         <table class="table table-bordered table-hover" id="tablaAreas">
             <thead class="table-dark">
                 <tr>

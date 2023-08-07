@@ -28,13 +28,19 @@
         background-color: white;
         text-shadow: -1px 2px 4px 4px white;
         }
+        h2 {
+        border: 2px solid black;
+        background-color: white;
+        text-shadow: -1px 2px 4px 4px white;
+        }
 
     </style>
 </head>
 <body>
-<h1 class="text-center">Formulario de puestos</h1>
+
 <div class="row justify-content-center mb-5">
     <form class="col-lg-8 border bg-light p-3" id="formularioPuesto">
+        <h2 class="text-center">Formulario de puestos</h2>
         <input type="hidden" name="puesto_id" id="puesto_id">
         <div class="row mb-3">
                 <div class="col">
@@ -66,7 +72,7 @@
 </div>
 <div class="row justify-content-center" id="divTabla">
     <div class="col-lg-8">
-        <h2>Listado de puestos</h2>
+        <center><h2>Listado de puestos</h2></center>
         <table class="table table-bordered table-hover" id="tablaPuestos">
             <thead class="table-dark">
                 <tr>

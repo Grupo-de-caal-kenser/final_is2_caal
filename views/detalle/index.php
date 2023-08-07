@@ -23,6 +23,11 @@
         .custom-bordered-table th {
             border: 2px solid;
         }
+
+        h1 {
+        color: black;
+        text-shadow: 2px 2px 20px gold;
+        }
         h2 {
         border: 1px solid black;
         background-color: white;

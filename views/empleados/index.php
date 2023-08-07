@@ -23,6 +23,11 @@
         .custom-bordered-table th {
             border: 2px solid;
         }
+        h2 {
+        border: 2px solid black;
+        background-color: white;
+        text-shadow: -1px 2px 4px 4px white;
+        }
 
     </style>
 </head>
@@ -80,7 +85,7 @@
 </div>
 <div class="row justify-content-center" id="divTabla">
     <div class="col-lg-8">
-        <h2>Listado de Empleados</h2>
+        <center><h2>Listado de Empleados</h2></center>
         <table class="table table-bordered table-hover" id="tablaEmpleados">
             <thead class="table-dark">
                 <tr>
